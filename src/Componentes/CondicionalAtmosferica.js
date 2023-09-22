@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function CondicionalAtmosferica() {
     const url = "https://api.datos.gob.mx/v1/condiciones-atmosfericas";
@@ -16,7 +18,7 @@ function CondicionalAtmosferica() {
     ];
 
     const [datos, setDatos] = useState([]);
-    const [estadoActual, setEstadoActual] = useState(""); // Corrección aquí
+    const [estadoActual, setEstadoActual] = useState("");
 
     const consultarDatos = () => {
         return fetch(url)
@@ -28,33 +30,54 @@ function CondicionalAtmosferica() {
         consultarDatos();
     }, []);
 
-    // Filtra las ciudades según el estado actual
     const ciudadesFiltradas = datos.filter((ciudad) => ciudad.state === estadoActual);
 
     return (
-        <>
-            <select
-                onChange={(e) => setEstadoActual(e.target.value)}
-                value={estadoActual} // Añadido para reflejar el estado seleccionado
-            >
-                <option value="">SELECCIONA UN ESTADO</option>
-                {estadosMx.map((opcion) => (
-                    <option key={opcion.id} value={opcion.name}>
-                        {opcion.name}
-                    </option>
-                ))}
-            </select>
-            {ciudadesFiltradas.map((ciudad, index) => {
-                return (
-                    <div key={index}>
-                        <p>
-                            {ciudad.name} - <i>{ciudad.skydescriptionlong}</i>
-                        </p>
+        <div className="container mt-4">
+            <div className="row">
+                <div className="col-md-4">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Seleccionar Estado</h5>
+                            <select
+                                className="form-select"
+                                onChange={(e) => setEstadoActual(e.target.value)}
+                                value={estadoActual}
+                            >
+                                <option value="">SELECCIONA UN ESTADO</option>
+                                {estadosMx.map((opcion) => (
+                                    <option key={opcion.id} value={opcion.name}>
+                                        {opcion.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
-                );
-            })}
-        </>
+                </div>
+                <div className="col-md-8">
+                    <div className="card">
+                        <div className="card-body">
+                            <h5 className="card-title">Resultados de la Búsqueda</h5>
+                            {ciudadesFiltradas.map((ciudad, index) => {
+                                return (
+                                    <div key={index}>
+                                        <p>
+                                            {ciudad.name} - <i>{ciudad.skydescriptionlong}</i>
+                                        </p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
 export default CondicionalAtmosferica;
+
+
+
+
+

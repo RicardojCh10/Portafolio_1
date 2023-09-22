@@ -1,38 +1,28 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar {
+  width: 200px;
+  background-color: #333; /* Color de fondo del sidebar */
+  color: white; /* Color del texto en el sidebar */
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
 }
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.main-content {
+  flex-grow: 1; /* Hace que el contenido principal ocupe todo el espacio restante */
+  padding: 20px;
+}
+
+/* Agrega más estilos según tus preferencias */
