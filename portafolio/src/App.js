@@ -4,7 +4,7 @@ import CondicionalAtmosferica from './Componentes/CondicionalAtmosferica';
 function App() {
   return (
     
-    <div>
+    <div className='App'>
       <CondicionalAtmosferica/>
     </div>
     
